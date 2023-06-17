@@ -35,7 +35,19 @@
                 <StackPanel Grid.Row="1">
                     <RadioButton Content="Home"
                                  FontSize="18"
-                                 Foreground="White"/>
+                                 Height="50"
+                                 Foreground="White"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Home"
+                                 FontSize="18"
+                                 Height="50"
+                                 Foreground="White"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Home"
+                                 FontSize="18"
+                                 Height="50"
+                                 Foreground="White"
+                                 Style="{StaticResource MenuButtonTheme}"/>
                 </StackPanel>
             </Grid>
         </Border>
