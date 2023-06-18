@@ -49,6 +49,15 @@
                                  Foreground="White"
                                  Style="{StaticResource MenuButtonTheme}"/>
                 </StackPanel>
+
+                <TextBox Grid.Column="1"
+                         Width="250"
+                         Height="40"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="5"
+                         Style="{StaticResource ModernTextBox}"
+                    />
             </Grid>
         </Border>
     </Grid>

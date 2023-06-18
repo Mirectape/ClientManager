@@ -21,7 +21,7 @@
                             <TextBlock IsHitTestVisible="False"
                                 Text="Search"
                                 VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
+                                       HorizontalAlignment="Left"
                                        Margin="10,0,0,0"
                                        FontSize="11"
                                        Foreground="DarkGray"
@@ -30,7 +30,7 @@
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
-                                                <Setter Property="Visibility" Value="Hidden"/>
+                                                <Setter Property="Visibility" Value="Visible"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                         <Setter Property="Visibility" Value="Hidden"/>
