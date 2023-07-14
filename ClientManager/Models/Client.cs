@@ -20,6 +20,8 @@ namespace ClientManager.Models
         public string PaternalName { get; set; }
         public string PhoneNumber { get; set; }
         public string PassportNumber { get; set; }
+        public DepositBankAccount<int> DepositBankAccount { get; set; }
+        public NonDepositBankAccount<int> NonDepositBankAccount { get; set; }
 
         public Client(string firstName, string secondName, string paternalName, string phoneNumber, string passportNumber)
         {
@@ -29,6 +31,8 @@ namespace ClientManager.Models
             PaternalName = paternalName;
             PhoneNumber = phoneNumber;
             PassportNumber = passportNumber;
+            DepositBankAccount = new DepositBankAccount<int>();
+            NonDepositBankAccount = new NonDepositBankAccount<int>();
         }
 
         private int NextID()
