@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace ClientManager.Models
 {
-    class Client
+    public class Client
     {
         private static int _id;
+
         static Client()
         {
             _id = 0;
         }
-        
-        public int clientID { get; }
+
+        public int ClientID { get; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string PaternalName { get; set; }
@@ -23,9 +24,10 @@ namespace ClientManager.Models
         public DepositBankAccount<int> DepositBankAccount { get; set; }
         public NonDepositBankAccount<int> NonDepositBankAccount { get; set; }
 
-        public Client(string firstName, string secondName, string paternalName, string phoneNumber, string passportNumber)
+        public Client(string firstName, string secondName, string paternalName, 
+            string phoneNumber, string passportNumber)
         {
-            clientID = NextID();
+            ClientID = NextID();
             FirstName = firstName;
             SecondName = secondName;
             PaternalName = paternalName;
@@ -64,6 +66,7 @@ namespace ClientManager.Models
             {
                 return true;
             }
+
             return !(client_1 is null) && client_1.Equals(client_2);
         }
 

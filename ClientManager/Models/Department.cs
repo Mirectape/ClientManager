@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace ClientManager.Models
 {
-    class Department
+    public class Department
     {
-        public int DepartmentId { get; set; }
+        public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
 
-        public Department(int Id, string Name)
+        public Department(int id, string name)
         {
-            DepartmentId = Id;
-            DepartmentName = Name;
+            DepartmentID = id;
+            DepartmentName = name;
         }
 
         public override string ToString()
         {
-            return $"{DepartmentName} {DepartmentId}";
+            return $"{DepartmentName}";
         }
 
         public override bool Equals(object obj)
         {
             return obj is Department anotherDepartment &&
-                this.DepartmentId == anotherDepartment.DepartmentId &&
-                this.DepartmentName == anotherDepartment.DepartmentName; 
+                this.DepartmentID == anotherDepartment.DepartmentID &&
+                this.DepartmentName == anotherDepartment.DepartmentName;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(DepartmentId, DepartmentName);
+            return HashCode.Combine(DepartmentID, DepartmentName);
         }
 
         public static bool operator ==(Department department_1, Department department_2)

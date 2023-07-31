@@ -15,25 +15,26 @@ namespace ClientManager.Models
             isActivated = false;
         }
 
-        public virtual void OpenAccount()
+        public void OpenAccount()
         {
             isActivated = true;
         }
-        public virtual void CloseAccount()
+
+        public void CloseAccount()
         {
             isActivated = false;
         }
     }
 
-    public class BankAccount<T>: Account
+    public class BankAccount<T> : Account
     {
         public string NameOfBank { get; set; }
-        public T depositMoney { get; set; }
+        public T depositMoney;
     }
 
     public class DepositBankAccount<T>: BankAccount<T>
     {
-        
+
     }
 
     public class NonDepositBankAccount<T>: BankAccount<T>
