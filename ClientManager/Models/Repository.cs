@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClientManager.Exceptions;
 
 namespace ClientManager.Models
 {
@@ -32,8 +33,8 @@ namespace ClientManager.Models
         /// </summary>
         private List<string> _paternalNames;
 
-        private List<Client> Clients { get; set; }
-        private List<Department> Departments { get; set; }
+        private readonly List<Client> _clients;
+        private readonly List<Department> _departments; 
 
         private string _pathToClients;
         private string _pathToDepartments;
@@ -53,7 +54,7 @@ namespace ClientManager.Models
             _pathToGenericSecondNames = "C:/Users/user/source/repos/ClientManager/GenericSecondNames.json";
             _pathToGenericPathernalNames = "C:/Users/user/source/repos/ClientManager/GenericPaternalNames.json";
 
-            Clients = new List<Client>();
+            _clients = new List<Client>();
 
             if(!File.Exists(_pathToClients))
             {
@@ -61,29 +62,62 @@ namespace ClientManager.Models
             }
             else
             {
-                Clients = this.LoadData<List<Client>>(_pathToClients);
+                _clients = this.LoadData<List<Client>>(_pathToClients);
             }
 
             if (!File.Exists(_pathToDepartments))
             {
-                Departments = new List<Department>()
+                _departments = new List<Department>()
                 {
                     new Department(1, "Department_1"),
                     new Department(2, "Department_2")
                 };
-                this.SaveData(Departments, _pathToDepartments);
+                this.SaveData(_departments, _pathToDepartments);
             }
             else
             {
-                Departments = this.LoadData<List<Department>>(_pathToDepartments);
+                _departments = this.LoadData<List<Department>>(_pathToDepartments);
             }
         }
+
+        public void AddClient(Client anotherClient)
+        {
+            foreach (var existingClient in _clients)
+            {
+                if(existingClient.Conflicts(anotherClient))
+                {
+                    throw new ClientConflictException(existingClient, anotherClient);
+                }
+            }
+
+            _clients.Add(anotherClient);
+        }
+
+        /// <summary>
+        /// Replaces selected client with newly assigned replacement client
+        /// </summary>
+        /// <param name="selectedClient">client to select</param>
+        /// <param name="replacementClient">replaces selected client</param>
+        public void ReplaceClient(Client selectedClient, Client replacementClient)
+        {
+            for (int i = 0; i < _clients.Count; i++)
+            {
+                if(_clients[i] == selectedClient)
+                {
+                    _clients[i] = replacementClient;
+                }
+            }
+        }
+
+        public IEnumerable<Client> GetAllClients() => _clients;
+
+        public IEnumerable<Department> GetAllDepartments() => _departments;
 
         private void GenerateClients(int count)
         {
             for(int i = 0; i < count; i++)
             {
-                Clients.Add(new Client(
+                _clients.Add(new Client(
                     _firstNames[Repository.randomizer.Next(_firstNames.Count())],
                     _secondNames[Repository.randomizer.Next(_secondNames.Count())],
                     _paternalNames[Repository.randomizer.Next(_paternalNames.Count())],
@@ -91,7 +125,7 @@ namespace ClientManager.Models
                     ((long)(Repository.randomizer.Next(1000000000, 1111111111)) * (long)(Repository.randomizer.Next(3, 10))).ToString()
                     ));
             }
-            this.SaveData(Clients, _pathToClients);
+            this.SaveData(_clients, _pathToClients);
         }
 
         private void SaveData<T>(T data, string path)
@@ -126,6 +160,6 @@ namespace ClientManager.Models
             }
         }
 
-        public void SaveChanges() => SaveData<List<Client>>(Clients, _pathToClients);
+        public void SaveChanges() => SaveData<List<Client>>(_clients, _pathToClients);
     }
 }

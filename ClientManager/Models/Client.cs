@@ -37,12 +37,6 @@ namespace ClientManager.Models
             NonDepositBankAccount = new NonDepositBankAccount<int>();
         }
 
-        private int NextID()
-        {
-            _id++;
-            return _id;
-        }
-
         public override string ToString()
         {
             return $"{this.FirstName} {this.SecondName}";
@@ -60,6 +54,18 @@ namespace ClientManager.Models
                 PhoneNumber, PassportNumber);
         }
 
+        public bool Conflicts(Client anotherClient)
+        {
+            if(this.PassportNumber != anotherClient.PassportNumber)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public static bool operator ==(Client client_1, Client client_2)
         {
             if(client_1 is null && client_2 is null)
@@ -74,5 +80,12 @@ namespace ClientManager.Models
         {
             return !(client_1 == client_2);
         }
+
+        private int NextID()
+        {
+            _id++;
+            return _id;
+        }
+
     }
 }
