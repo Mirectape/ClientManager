@@ -34,6 +34,11 @@ namespace ClientManager.Models
         private List<string> _paternalNames;
 
         private readonly List<Client> _clients;
+        public List<Client> Clients
+        {
+            get => _clients;
+        }
+
         private readonly List<Department> _departments; 
 
         private string _pathToClients;
@@ -115,7 +120,11 @@ namespace ClientManager.Models
 
         private void GenerateClients(int count)
         {
-            for(int i = 0; i < count; i++)
+            _firstNames = LoadData<List<string>>(_pathToGenericFirstNames);
+            _secondNames = LoadData<List<string>>(_pathToGenericSecondNames);
+            _paternalNames = LoadData<List<string>>(_pathToGenericPathernalNames);
+
+            for (int i = 0; i < count; i++)
             {
                 _clients.Add(new Client(
                     _firstNames[Repository.randomizer.Next(_firstNames.Count())],

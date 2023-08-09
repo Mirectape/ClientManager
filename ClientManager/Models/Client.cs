@@ -23,6 +23,7 @@ namespace ClientManager.Models
         public string PassportNumber { get; set; }
         public DepositBankAccount<int> DepositBankAccount { get; set; }
         public NonDepositBankAccount<int> NonDepositBankAccount { get; set; }
+        public ClientProtocol<int> ClientProtocol { get; set; }
 
         public Client(string firstName, string secondName, string paternalName, 
             string phoneNumber, string passportNumber)
@@ -35,6 +36,7 @@ namespace ClientManager.Models
             PassportNumber = passportNumber;
             DepositBankAccount = new DepositBankAccount<int>();
             NonDepositBankAccount = new NonDepositBankAccount<int>();
+            ClientProtocol = new ClientProtocol<int>(DepositBankAccount, NonDepositBankAccount);
         }
 
         public override string ToString()

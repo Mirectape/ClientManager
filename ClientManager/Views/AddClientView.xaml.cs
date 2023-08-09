@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace ClientManager.Views
 {
     /// <summary>
-    /// Interaction logic for ManagerView.xaml
+    /// Interaction logic for AddClientView.xaml
     /// </summary>
-    public partial class ManagerView : UserControl
+    public partial class AddClientView : UserControl
     {
-        public ManagerView()
+        public AddClientView()
         {
             InitializeComponent();
-        }
-
-        private void ApplyChangesButton_Click(object sender, RoutedEventArgs e)
-        {
-            myList.SelectAll();
         }
     }
 }

@@ -16,4 +16,15 @@ namespace ClientManager.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
+    public enum DataType
+    {
+        FirstName,
+        SecondName,
+        PaternalName,
+        PhoneNumber,
+        PassportNumber,
+        DepositAccount,
+        NonDepositAccount
+    }
 }
