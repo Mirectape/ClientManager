@@ -58,6 +58,7 @@ namespace ClientManager.Commands
             try
             {
                 _repository.AddClient(newClient);
+                _repository.SaveChanges();
 
                 MessageBox.Show("Successfully added client", "Success",
                     MessageBoxButton.OK, MessageBoxImage.Information);

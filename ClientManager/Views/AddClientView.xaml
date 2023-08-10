@@ -3,10 +3,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ClientManager.Views"
+             xmlns:local="clr-namespace:ClientManager.Views" 
+             xmlns:viewmodels="clr-namespace:ClientManager.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AddClientViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0"
+            Text="First Name" FontSize="24"
+            HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" 
+            x:Name="tbFirstName" Margin="10"
+                 FontSize=" 24"
+                 Text="{Binding FirstName}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                Text="Second Name" FontSize="24"
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" 
+                x:Name="tbSecondName" Margin="10"
+                 FontSize=" 24"
+                 Text="{Binding SecondName}"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0"
+                Text="Paternal Name" FontSize="24"
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" 
+                x:Name="tbPaternalName" Margin="10"
+                 FontSize=" 24"
+                 Text="{Binding PaternalName}"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0"
+                Text="Phone Number" FontSize="24"
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="1" 
+                x:Name="tbPhoneNumber" Margin="10"
+                 FontSize=" 24"
+                 Text="{Binding PhoneNumber}"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0"
+                Text="Passport Number" FontSize="24"
+                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1" 
+                x:Name="tbPassportNumber" Margin="10"
+                 FontSize=" 24"
+                 Text="{Binding PassportNumber}"/>
+
+        <Button Grid.Row="5" Grid.Column="0"
+                Margin="100 20"
+                Content="Add"
+                Command="{Binding SubmitCommand}"/>
+
+        <Button Grid.Row="5" Grid.Column="1"
+                Margin="100 20"
+                Content="Cancel"
+                Command="{Binding CancelCommand}"/>
     </Grid>
 </UserControl>

@@ -26,6 +26,9 @@
                 <DataTemplate DataType="{x:Type vms:ManagerViewModel}">
                     <views:ManagerView/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:AddClientViewModel}">
+                    <views:AddClientView/>
+                </DataTemplate>
             </Grid.Resources>
 
             <ContentControl Content="{Binding CurrentViewModel}"/>

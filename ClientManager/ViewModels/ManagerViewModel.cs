@@ -76,14 +76,11 @@ namespace ClientManager.ViewModels
             _cmbx_departments = new ObservableCollection<string>();
 
             ChangeClientDataCommand = new ChangeClientDataCommand(repository, this, renewManagerViewModelService, _typeOfWorker);
+            SortClientsCommand = new SortClientsCommand(repository, this);
             OpenAddClientViewCommand = new NavigateCommand(addNewClientService);
             _selectedClient = null;
             UpdateClients();
             UpdateDepartments();
-        }
-
-        public void ChangeClientData()
-        {
         }
 
         public void UpdateClients()

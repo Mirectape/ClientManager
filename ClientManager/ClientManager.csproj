@@ -65,10 +65,12 @@
     <Compile Include="Commands\ChangeClientDataCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
+    <Compile Include="Commands\SortClientsCommand.cs" />
     <Compile Include="Models\ClientProtocol.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Store\NavigationStore.cs" />
     <Compile Include="ViewModels\AddClientViewModel.cs" />
+    <Compile Include="ViewModels\ConsultantViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ManagerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

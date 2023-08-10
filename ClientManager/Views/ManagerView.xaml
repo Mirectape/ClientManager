@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ClientManager.Views" xmlns:viewmodels="clr-namespace:ClientManager.ViewModels"
+             xmlns:local="clr-namespace:ClientManager.Views" 
+             xmlns:viewmodels="clr-namespace:ClientManager.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:ManagerViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -34,7 +35,7 @@
             <ComboBox x:Name="cbClientPersonalData" Margin="10" ItemsSource="{Binding Cmbx_clientData}" SelectedItem="{Binding Path=SelectedClientData}"/>
             <TextBox  x:Name="tbClientParameter" Margin="10" Text="{Binding ClientParameter}"/>
             <Button Content="Apply changes" Margin="20" Command="{Binding ChangeClientDataCommand}" Click="ApplyChangesButton_Click"/>
-            <Button Content="Sort clients" Margin="20" Background="BurlyWood" Command="{Binding SortClientsCommand}"/>
+            <Button Content="Sort clients by second name" Margin="20" Background="BurlyWood" Command="{Binding SortClientsCommand}"/>
             <Button Content="Add client" Margin="20" Background="BurlyWood" Command="{Binding OpenAddClientViewCommand}"/>
         </StackPanel>
     </Grid>

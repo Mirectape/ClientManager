@@ -33,7 +33,7 @@ namespace ClientManager.Models
         /// </summary>
         private List<string> _paternalNames;
 
-        private readonly List<Client> _clients;
+        private List<Client> _clients;
         public List<Client> Clients
         {
             get => _clients;
@@ -112,6 +112,11 @@ namespace ClientManager.Models
                     _clients[i] = replacementClient;
                 }
             }
+        }
+
+        public void SortClients()
+        {
+            _clients = _clients.OrderBy(n => n.SecondName).ToList<Client>();
         }
 
         public IEnumerable<Client> GetAllClients() => _clients;
