@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ClientManager.Views.ConsultantView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClientManager.Views"
+             xmlns:viewmodels="clr-namespace:ClientManager.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ManagerViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView  Grid.Column="1"
+                   Margin="10"
+                   ItemsSource="{Binding Clients}"
+                   SelectedItem="{Binding Path=SelectedClient}"
+                   Name="myList">
+            <ListView.View>
+                <GridView x:Name="Headers">
+                    <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Second Name" Width="100" DisplayMemberBinding="{Binding SecondName}"/>
+                    <GridViewColumn Header="Paternal Name" Width="100" DisplayMemberBinding="{Binding PaternalName}"/>
+                    <GridViewColumn Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel>
+            <ComboBox x:Name="cbDepartment" Margin="10" ItemsSource="{Binding Cmbx_departments}"/>
+            <ComboBox x:Name="cbClientPersonalData" Margin="10" ItemsSource="{Binding Cmbx_clientData}" SelectedItem="{Binding Path=SelectedClientData}"/>
+            <TextBox  x:Name="tbClientParameter" Margin="10" Text="{Binding ClientParameter}"/>
+            <Button Content="Apply changes" Margin="20" Command="{Binding ChangeClientDataCommand}" Click="ApplyChangesButton_Click"/>
+            <Button Content="Sort clients by second name" Margin="20" Background="BurlyWood" Command="{Binding SortClientsCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

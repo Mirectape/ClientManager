@@ -11,9 +11,9 @@ namespace ClientManager.Commands
     class SortClientsCommand : CommandBase
     {
         private readonly Repository _repository;
-        private readonly ManagerViewModel _workerViewModel;
+        private readonly WorkerViewModelBase _workerViewModel;
 
-        public SortClientsCommand(Repository repository, ManagerViewModel workerViewModel)
+        public SortClientsCommand(Repository repository, WorkerViewModelBase workerViewModel)
         {
             _repository = repository;
             _workerViewModel = workerViewModel;

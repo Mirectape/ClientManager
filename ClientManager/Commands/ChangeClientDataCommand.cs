@@ -14,14 +14,14 @@ namespace ClientManager.Commands
     public class ChangeClientDataCommand : CommandBase
     {
         private readonly Repository _repository;
-        private readonly ManagerViewModel _workerViewModel;
+        private readonly WorkerViewModelBase _workerViewModel;
         private readonly NavigationService _navigationService;
         private bool _passportRepetition;
 
         //For client protocol
         private string _whoChanged;
 
-        public ChangeClientDataCommand(Repository repository, ManagerViewModel workerViewModel,
+        public ChangeClientDataCommand(Repository repository, WorkerViewModelBase workerViewModel,
             NavigationService navigationService, string whoChanged)
         {
             _repository = repository;

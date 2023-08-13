@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:ClientManager"
              >
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <BitmapImage x:Key="AppLogo" UriSource="Assets\AppLogo.png"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

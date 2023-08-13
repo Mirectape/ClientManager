@@ -9,9 +9,36 @@ using ClientManager.Models;
 using ClientManager.Store;
 using ClientManager.ViewModels;
 using ClientManager.Services;
+using System.Collections.ObjectModel;
 
 namespace ClientManager
 {
+    public static class DataWorkerType
+    {
+        public static readonly string manager = "Manager";
+        public static readonly string consultant = "Consultant";
+        public static readonly string bankWorker = "Bank worker";
+        public static readonly ObservableCollection<string> allTypes =
+            new ObservableCollection<string>()
+            {
+                "Manager", "Consultant", "Bank worker"
+            };
+    }
+
+    public static class ClientDataCollections
+    {
+        public static readonly ObservableCollection<string> ClientDataCollectionForManager =
+            new ObservableCollection<string>()
+            {
+                "First Name", "Second Name", "Paternal Name", "Phone Number", "Passport Number"
+            };
+        public static readonly ObservableCollection<string> ClientDataCollectionForConsultant =
+            new ObservableCollection<string>()
+            {
+                "Phone Number"
+            };
+    }
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -28,8 +55,8 @@ namespace ClientManager
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new ManagerViewModel(_repository, new NavigationService(_navigationStore, CreateAddClientViewModel), 
-                new NavigationService(_navigationStore, CreateManagerViewModel));
+            _navigationStore.CurrentViewModel = new MainMenuViewModel(new NavigationService(_navigationStore, CreateManagerViewModel), 
+                new NavigationService(_navigationStore, CreateConsultantViewModel));
 
             MainWindow = new MainWindow()
             {
@@ -43,6 +70,11 @@ namespace ClientManager
         private ManagerViewModel CreateManagerViewModel()
         {
             return new ManagerViewModel(_repository, new NavigationService(_navigationStore, CreateAddClientViewModel), new NavigationService(_navigationStore, CreateManagerViewModel));
+        }
+
+        private ConsultantViewModel CreateConsultantViewModel()
+        {
+            return new ConsultantViewModel(_repository, new NavigationService(_navigationStore, CreateConsultantViewModel));
         }
 
         private AddClientViewModel CreateAddClientViewModel()
