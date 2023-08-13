@@ -71,6 +71,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Store\NavigationStore.cs" />
     <Compile Include="ViewModels\AddClientViewModel.cs" />
+    <Compile Include="ViewModels\BankWorkerViewModel.cs" />
     <Compile Include="ViewModels\ConsultantViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="ViewModels\WorkerViewModelBase.cs" />
     <Compile Include="Views\AddClientView.xaml.cs">
       <DependentUpon>AddClientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BankWorkerView.xaml.cs">
+      <DependentUpon>BankWorkerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ConsultantView.xaml.cs">
       <DependentUpon>ConsultantView.xaml</DependentUpon>
@@ -103,6 +107,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AddClientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BankWorkerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
