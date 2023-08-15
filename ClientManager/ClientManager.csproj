@@ -63,7 +63,10 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AddClientCommand.cs" />
     <Compile Include="Commands\BankOperationCommands\CloseAccountCommand.cs" />
+    <Compile Include="Commands\BankOperationCommands\CommitTransferCommand.cs" />
     <Compile Include="Commands\BankOperationCommands\OpenAccountCommand.cs" />
+    <Compile Include="Commands\BankOperationCommands\TopUpDepositAccountCommand.cs" />
+    <Compile Include="Commands\BankOperationCommands\TopUpNonDepositAccountCommand.cs" />
     <Compile Include="Commands\ChangeClientDataCommand.cs" />
     <Compile Include="Commands\ChooseDataWorkerCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />

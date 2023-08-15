@@ -24,9 +24,5 @@ namespace ClientManager.Views
         {
             InitializeComponent();
         }
-        private void ApplyChangesButton_Click(object sender, RoutedEventArgs e)
-        {
-            myList.SelectAll();
-        }
     }
 }

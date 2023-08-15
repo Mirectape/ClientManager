@@ -35,8 +35,8 @@ namespace ClientManager.ViewModels
         #endregion
 
         #region Top up account
-        private string _topUpSum;
-        public string TopUpSum
+        private int _topUpSum;
+        public int TopUpSum
         {
             get
             {
@@ -45,17 +45,17 @@ namespace ClientManager.ViewModels
             set
             {
                 _topUpSum = value;
-                OnPropertyChanged(nameof(ClientParameter));
+                OnPropertyChanged(nameof(TopUpSum));
             }
         }
 
-        public ICommand TopUpToDepositAccountCommand;
-        public ICommand TopUpToNonDepositAccountCommand;
+        public ICommand TopUpDepositAccountCommand { get; }
+        public ICommand TopUpNonDepositAccountCommand { get; }
         #endregion
 
         #region Money Transfer
-        private string _transferSum;
-        public string TransferSum
+        private int _transferSum;
+        public int TransferSum
         {
             get
             {
@@ -78,6 +78,7 @@ namespace ClientManager.ViewModels
             set
             {
                 _selectedClientToReceiveTransfer = value;
+                OnPropertyChanged(nameof(SelectedBankAccountToReceiveTransfer));
             }
         }
 
@@ -103,6 +104,9 @@ namespace ClientManager.ViewModels
             _cmbx_bankAccounts = BankAccountType.allTypes;
             OpenAccountCommand = new OpenAccountCommand(repository, this, renewBankWorkerViewModelService);
             CloseAccountCommand = new CloseAccountCommand(repository, this, renewBankWorkerViewModelService);
+            TopUpDepositAccountCommand = new TopUpDepositAccountCommand(repository, this, renewBankWorkerViewModelService);
+            TopUpNonDepositAccountCommand = new TopUpNonDepositAccountCommand(repository, this, renewBankWorkerViewModelService);
+            CommitTransferCommand = new CommitTransferCommand(repository, this, renewBankWorkerViewModelService);
         }
     }
 }

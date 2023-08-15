@@ -61,8 +61,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="To Deposit" FontSize="10" Margin="10,20" Grid.Column="0" Command="{Binding TopUpToDepositAccountCommand}"/>
-                <Button Content="To NonDeposit" FontSize="10" Margin="10,20" Grid.Column="1" Command="{Binding TopUpToNonDepositAccountCommand}"/>
+                <Button Content="To Deposit" FontSize="10" Margin="10,20" Grid.Column="0" Command="{Binding TopUpDepositAccountCommand}"/>
+                <Button Content="To NonDeposit" FontSize="10" Margin="10,20" Grid.Column="1" Command="{Binding TopUpNonDepositAccountCommand}"/>
             </Grid>
             
             <TextBlock Text="MONEY TRANSFER"
@@ -74,7 +74,7 @@
             <ComboBox x:Name="cbAccount" Margin="10" ItemsSource="{Binding Cmbx_bankAccounts}" SelectedItem="{Binding SelectedBankAccountToReceiveTransfer}"/>
             <TextBox x:Name="tbMoneyTransfer" Margin="5" FontStyle="Italic"
                      Text="{Binding TransferSum}"/>
-            <Button Margin="10" >Commit Transfer</Button>
+            <Button Margin="10" Command="{Binding CommitTransferCommand}" >Commit Transfer</Button>
         </StackPanel>
     </Grid>
 </UserControl>
