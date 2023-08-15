@@ -65,7 +65,7 @@
                 <Button Content="To NonDeposit" FontSize="10" Margin="10,20" Grid.Column="1" Command="{Binding TopUpNonDepositAccountCommand}"/>
             </Grid>
             
-            <TextBlock Text="MONEY TRANSFER"
+            <TextBlock Text="MONEY TRANSFER TO"
                        HorizontalAlignment="Center" 
                        Foreground="#FFFF1515" 
                        FontFamily="Yu Gothic UI Semibold"

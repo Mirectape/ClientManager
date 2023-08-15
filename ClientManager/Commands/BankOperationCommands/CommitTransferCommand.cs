@@ -28,12 +28,69 @@ namespace ClientManager.Commands.BankOperationCommands
 
         private void onViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-           // if()
+            if(e.PropertyName == nameof(BankWorkerViewModel.SelectedClientToReceiveTransfer) ||
+                e.PropertyName == nameof(BankWorkerViewModel.SelectedBankAccountToReceiveTransfer) ||
+                e.PropertyName == nameof(BankWorkerViewModel.TransferSum))
+            {
+                OnCanExecuteChanged();
+            }
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return !(_bankWorkerViewModel.SelectedClientToReceiveTransfer == null) &&
+                !(_bankWorkerViewModel.SelectedBankAccountToReceiveTransfer == null) &&
+                !(_bankWorkerViewModel.SelectedClient == null) &&
+                _bankWorkerViewModel.TransferSum > 0 &&
+                base.CanExecute(parameter);
         }
 
         public override void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            switch (_bankWorkerViewModel.SelectedBankAccountToReceiveTransfer)
+            {
+                case "Deposit Account":
+                    if(_bankWorkerViewModel.SelectedClient.DepositBankAccount.DepositMoney >= _bankWorkerViewModel.TransferSum)
+                    {
+                        _bankWorkerViewModel.SelectedClient.DepositBankAccount.DepositMoney -= _bankWorkerViewModel.TransferSum;
+                        _bankWorkerViewModel.SelectedClientToReceiveTransfer.DepositBankAccount.DepositMoney += _bankWorkerViewModel.TransferSum;
+                        MessageBox.Show("Success!", "Information",
+                        MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        _bankWorkerViewModel.SelectedClient.ClientProtocol.MoneyTransferInfo =
+                            $"Money transfer from this Dep account in amount of { _bankWorkerViewModel.TransferSum} at {DateTime.Now}";
+                        _bankWorkerViewModel.SelectedClientToReceiveTransfer.ClientProtocol.MoneyReceptionInfo =
+                            $"Money reception to this Dep account in amount of { _bankWorkerViewModel.TransferSum} at {DateTime.Now}";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough money!", "Information",
+                        MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                    break;
+                case "Non-deposit Account":
+                    if (_bankWorkerViewModel.SelectedClient.NonDepositBankAccount.DepositMoney >= _bankWorkerViewModel.TransferSum)
+                    {
+                        _bankWorkerViewModel.SelectedClient.NonDepositBankAccount.DepositMoney -= _bankWorkerViewModel.TransferSum;
+                        _bankWorkerViewModel.SelectedClientToReceiveTransfer.NonDepositBankAccount.DepositMoney += _bankWorkerViewModel.TransferSum;
+                        MessageBox.Show("Success!", "Information",
+                        MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        _bankWorkerViewModel.SelectedClient.ClientProtocol.MoneyTransferInfo =
+                            $"Money transfer from this NonDep account in amount of { _bankWorkerViewModel.TransferSum} at {DateTime.Now}";
+                        _bankWorkerViewModel.SelectedClientToReceiveTransfer.ClientProtocol.MoneyReceptionInfo =
+                            $"Money reception to this NonDep account in amount of { _bankWorkerViewModel.TransferSum} at {DateTime.Now}";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough money!", "Information",
+                        MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            _bankWorkerViewModel.UpdateClients();
+            _repository.SaveChanges();
+            _navigationService.Navigate();
         }
     }
 }

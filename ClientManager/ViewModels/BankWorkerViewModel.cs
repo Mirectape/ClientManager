@@ -64,7 +64,7 @@ namespace ClientManager.ViewModels
             set
             {
                 _transferSum = value;
-                OnPropertyChanged(nameof(ClientParameter));
+                OnPropertyChanged(nameof(TransferSum));
             }
         }
 
@@ -78,7 +78,7 @@ namespace ClientManager.ViewModels
             set
             {
                 _selectedClientToReceiveTransfer = value;
-                OnPropertyChanged(nameof(SelectedBankAccountToReceiveTransfer));
+                OnPropertyChanged(nameof(SelectedClientToReceiveTransfer));
             }
         }
 
@@ -96,7 +96,7 @@ namespace ClientManager.ViewModels
             }
         }
 
-        public ICommand CommitTransferCommand;
+        public ICommand CommitTransferCommand { get; }
         #endregion
 
         public BankWorkerViewModel(Repository repository, NavigationService renewBankWorkerViewModelService) : base(repository)
