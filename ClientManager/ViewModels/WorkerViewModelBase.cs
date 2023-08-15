@@ -29,6 +29,7 @@ namespace ClientManager.ViewModels
             set
             {
                 _selectedClient = value;
+                OnPropertyChanged(nameof(SelectedClient));
             }
         }
 
@@ -47,7 +48,7 @@ namespace ClientManager.ViewModels
         }
 
         private string _clientParameter;
-        public string ClientParameter
+        public string ClientParameter //Data with which we choose chosen clientData we want to change
         {
             get
             {

@@ -28,10 +28,10 @@ namespace ClientManager.ViewModels
 
         public ICommand ChooseDataWorkerCommand { get; }
 
-        public MainMenuViewModel(NavigationService CreateManagerViewModel, NavigationService CreateConsultantViewModel)
+        public MainMenuViewModel(NavigationService CreateManagerViewModel, NavigationService CreateConsultantViewModel, NavigationService CreateBankWorkerViewModel)
         {
             _cmbx_dataWorker = DataWorkerType.allTypes;
-            ChooseDataWorkerCommand = new ChooseDataWorkerCommand(this, CreateManagerViewModel, CreateConsultantViewModel); 
+            ChooseDataWorkerCommand = new ChooseDataWorkerCommand(this, CreateManagerViewModel, CreateConsultantViewModel, CreateBankWorkerViewModel);
         }
     }
 }

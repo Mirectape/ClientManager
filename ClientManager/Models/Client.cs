@@ -41,7 +41,7 @@ namespace ClientManager.Models
 
         public override string ToString()
         {
-            return $"{this.FirstName} {this.SecondName}";
+            return $"{this.FirstName} {this.SecondName} {this.ClientID}";
         }
 
         public override bool Equals(object obj)

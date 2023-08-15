@@ -39,6 +39,17 @@ namespace ClientManager
             };
     }
 
+    public static class BankAccountType
+    {
+        public static readonly string depositAccount = "Deposit Account";
+        public static readonly string nonDepositAccount = "Non-deposit Account";
+        public static readonly ObservableCollection<string> allTypes =
+            new ObservableCollection<string>()
+            {
+                "Deposit Account", "Non-deposit Account"
+            };
+    }
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -56,7 +67,7 @@ namespace ClientManager
         protected override void OnStartup(StartupEventArgs e)
         {
             _navigationStore.CurrentViewModel = new MainMenuViewModel(new NavigationService(_navigationStore, CreateManagerViewModel), 
-                new NavigationService(_navigationStore, CreateConsultantViewModel));
+                new NavigationService(_navigationStore, CreateConsultantViewModel), new NavigationService(_navigationStore, CreateBankWorkerViewModel));
 
             MainWindow = new MainWindow()
             {
@@ -80,6 +91,11 @@ namespace ClientManager
         private AddClientViewModel CreateAddClientViewModel()
         {
             return new AddClientViewModel(_repository, new NavigationService(_navigationStore, CreateManagerViewModel));
+        }
+
+        private BankWorkerViewModel CreateBankWorkerViewModel()
+        {
+            return new BankWorkerViewModel(_repository, new NavigationService(_navigationStore, CreateBankWorkerViewModel));
         }
     }
 }

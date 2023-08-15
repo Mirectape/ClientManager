@@ -16,11 +16,12 @@ namespace ClientManager.Commands
         private readonly NavigationService _createBankWorkerViewModel;
 
         public ChooseDataWorkerCommand(MainMenuViewModel mainMenuViewModel, NavigationService createManagerViewModel, 
-            NavigationService createConsultantViewModel)
+            NavigationService createConsultantViewModel, NavigationService CreateBankWorkerViewModel)
         {
             _mainMenuViewModel = mainMenuViewModel;
             _createManagerViewModel = createManagerViewModel;
             _createConsultantViewModel = createConsultantViewModel;
+            _createBankWorkerViewModel = CreateBankWorkerViewModel;
         }
 
         public override void Execute(object parameter)
@@ -33,7 +34,8 @@ namespace ClientManager.Commands
                 case "Consultant":
                     _createConsultantViewModel.Navigate();
                     break;
-                case "Bank Worker":
+                case "Bank worker":
+                    _createBankWorkerViewModel.Navigate();
                     break;
                 default:
                     break;

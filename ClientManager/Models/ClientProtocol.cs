@@ -41,6 +41,22 @@ namespace ClientManager.Models
 
         public string GetAccountStatusInfo(BankAccount<T> bankAccount)
         {
+            if (bankAccount.isActivated == true)
+            {
+                return $"Enabled";
+            }
+            else if (bankAccount.isActivated == false)
+            {
+                return $"Disabled";
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public string GetAccountStatusChanged(BankAccount<T> bankAccount)
+        {
             if(bankAccount.isActivated == true)
             {
                 return $"This account is successfully activated";

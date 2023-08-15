@@ -9,6 +9,72 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="1"
+                  Margin="10"
+                  ItemsSource="{Binding Clients}"
+                  SelectedItem="{Binding Path=SelectedClient}"
+                  Name="myList">
+            <ListView.View>
+                <GridView x:Name="Headers">
+                    <GridViewColumn Header="ID" Width="80" DisplayMemberBinding="{Binding ClientID}"/>
+                    <GridViewColumn Header="First Name" Width="80" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Second Name" Width="80" DisplayMemberBinding="{Binding SecondName}"/>
+                    <GridViewColumn Header="Paternal Name" Width="80" DisplayMemberBinding="{Binding PaternalName}"/>
+                    <GridViewColumn Header="Deposit Account" Width="80" DisplayMemberBinding="{Binding DepositBankAccount}"/>
+                    <GridViewColumn Header="NonDeposit Account" Width="80" DisplayMemberBinding="{Binding NonDepositBankAccount}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel>
+            <ComboBox x:Name="cbDepartment" Margin="10" ItemsSource="{Binding Cmbx_departments}"/>
             
+            <TextBlock Text="ACCOUNT MANAGER" 
+                       HorizontalAlignment="Center" 
+                       Foreground="#FFFF1515" 
+                       FontFamily="Yu Gothic UI Semibold"
+                       FontSize="8"/>
+            <ComboBox Margin="10" ItemsSource="{Binding Cmbx_bankAccounts}" SelectedItem="{Binding SelectedBankAccount}"/>
+            <Grid Height="70" Margin="10,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Open account" FontSize="10" Margin="5,20" Grid.Column="0" Command="{Binding OpenAccountCommand}" />
+                <Button Content="Close account" FontSize="10" Margin="5,20" Grid.Column="1" Command="{Binding CloseAccountCommand}"/>
+            </Grid>
+            
+            <TextBlock Text="TOP UP ACCOUNT" 
+                       HorizontalAlignment="Center" 
+                       Foreground="#FFFF1515" 
+                       FontFamily="Yu Gothic UI Semibold"
+                       FontSize="8"/>
+            <TextBox x:Name="tbTopUpAnyAccount" Margin="10" FontStyle="Italic"
+                     Text="{Binding TopUpSum}"/>
+            <Grid Height="70" Margin="15,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="To Deposit" FontSize="10" Margin="10,20" Grid.Column="0" Command="{Binding TopUpToDepositAccountCommand}"/>
+                <Button Content="To NonDeposit" FontSize="10" Margin="10,20" Grid.Column="1" Command="{Binding TopUpToNonDepositAccountCommand}"/>
+            </Grid>
+            
+            <TextBlock Text="MONEY TRANSFER"
+                       HorizontalAlignment="Center" 
+                       Foreground="#FFFF1515" 
+                       FontFamily="Yu Gothic UI Semibold"
+                       FontSize="8"/>
+            <ComboBox x:Name="cbClients" Margin="10" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClientToReceiveTransfer}"/>
+            <ComboBox x:Name="cbAccount" Margin="10" ItemsSource="{Binding Cmbx_bankAccounts}" SelectedItem="{Binding SelectedBankAccountToReceiveTransfer}"/>
+            <TextBox x:Name="tbMoneyTransfer" Margin="5" FontStyle="Italic"
+                     Text="{Binding TransferSum}"/>
+            <Button Margin="10" >Commit Transfer</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

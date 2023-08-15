@@ -29,12 +29,17 @@ namespace ClientManager.Models
     public class BankAccount<T> : Account
     {
         public string NameOfBank { get; set; }
-        public T depositMoney;
+        public T DepositMoney { get; set; }
+
+        public override string ToString()
+        {
+            return $"{DepositMoney}";
+        }
     }
 
     public class DepositBankAccount<T>: BankAccount<T>
     {
-
+        
     }
 
     public class NonDepositBankAccount<T>: BankAccount<T>
