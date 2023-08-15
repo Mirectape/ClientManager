@@ -13,7 +13,7 @@ using System.Windows.Data;
 
 namespace ClientManager.ViewModels
 {
-    class BankWorkerViewModel : WorkerViewModelBase
+    public class BankWorkerViewModel : WorkerViewModelBase
     {
         private readonly ObservableCollection<string> _cmbx_bankAccounts;
         public IEnumerable<string> Cmbx_bankAccounts => _cmbx_bankAccounts;
@@ -30,8 +30,8 @@ namespace ClientManager.ViewModels
             }
         }
 
-        public ICommand OpenAccountCommand;
-        public ICommand CloseAccountCommand;
+        public ICommand OpenAccountCommand { get; }
+        public ICommand CloseAccountCommand { get; }
         #endregion
 
         #region Top up account
@@ -101,8 +101,8 @@ namespace ClientManager.ViewModels
         public BankWorkerViewModel(Repository repository, NavigationService renewBankWorkerViewModelService) : base(repository)
         {
             _cmbx_bankAccounts = BankAccountType.allTypes;
-            OpenAccountCommand = new OpenAccountCommand();
-            CloseAccountCommand = new CloseAccountCommand();
+            OpenAccountCommand = new OpenAccountCommand(repository, this, renewBankWorkerViewModelService);
+            CloseAccountCommand = new CloseAccountCommand(repository, this, renewBankWorkerViewModelService);
         }
     }
 }

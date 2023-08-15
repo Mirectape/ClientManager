@@ -65,7 +65,7 @@ namespace ClientManager.Commands
                     case "First Name":
                         foreach (var client in _repository.Clients)
                         {
-                            if(client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                            if (client == _workerViewModel.SelectedClient)
                             {
                                 client.FirstName = _workerViewModel.ClientParameter;
                                 client.ClientProtocol.WhatChanged = "First Name";
@@ -75,7 +75,7 @@ namespace ClientManager.Commands
                     case "Second Name":
                         foreach (var client in _repository.Clients)
                         {
-                            if (client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                            if (client == _workerViewModel.SelectedClient)
                             {
                                 client.SecondName = _workerViewModel.ClientParameter;
                                 client.ClientProtocol.WhatChanged = "Second Name";
@@ -85,7 +85,7 @@ namespace ClientManager.Commands
                     case "Paternal Name":
                         foreach (var client in _repository.Clients)
                         {
-                            if (client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                            if (client == _workerViewModel.SelectedClient)
                             {
                                 client.PaternalName = _workerViewModel.ClientParameter;
                                 client.ClientProtocol.WhatChanged = "Paternal Name";
@@ -95,7 +95,7 @@ namespace ClientManager.Commands
                     case "Phone Number":
                         foreach (var client in _repository.Clients)
                         {
-                            if (client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                            if (client == _workerViewModel.SelectedClient)
                             {
                                 client.PhoneNumber = _workerViewModel.ClientParameter;
                                 client.ClientProtocol.WhatChanged = "Phone Number";
@@ -105,7 +105,7 @@ namespace ClientManager.Commands
                     case "Passport Number":
                         foreach (var client in _repository.Clients)
                         {
-                            if (client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                            if (client == _workerViewModel.SelectedClient)
                             {
                                 client.PassportNumber = _workerViewModel.ClientParameter;
                                 client.ClientProtocol.WhatChanged = "Passport Number";
@@ -118,7 +118,7 @@ namespace ClientManager.Commands
 
                 foreach (var client in _repository.Clients)
                 {
-                    if (client.PassportNumber == _workerViewModel.SelectedClient.PassportNumber)
+                    if (client == _workerViewModel.SelectedClient)
                     {
                         client.ClientProtocol.TimeDataChanged = DateTime.Now;
                         client.ClientProtocol.WhoChanged = _whoChanged;

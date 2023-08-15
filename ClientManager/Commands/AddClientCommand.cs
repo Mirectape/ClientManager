@@ -67,7 +67,6 @@ namespace ClientManager.Commands
             }
             catch (ClientConflictException)
             {
-
                 MessageBox.Show("This passport number already exists", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
