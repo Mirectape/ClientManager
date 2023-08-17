@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using ClientManagerDataTypeLibrary;
 
 namespace ClientManager.ViewModels
 {

@@ -13,43 +13,6 @@ using System.Collections.ObjectModel;
 
 namespace ClientManager
 {
-    public static class DataWorkerType
-    {
-        public static readonly string manager = "Manager";
-        public static readonly string consultant = "Consultant";
-        public static readonly string bankWorker = "Bank worker";
-        public static readonly ObservableCollection<string> allTypes =
-            new ObservableCollection<string>()
-            {
-                "Manager", "Consultant", "Bank worker"
-            };
-    }
-
-    public static class ClientDataCollections
-    {
-        public static readonly ObservableCollection<string> ClientDataCollectionForManager =
-            new ObservableCollection<string>()
-            {
-                "First Name", "Second Name", "Paternal Name", "Phone Number", "Passport Number"
-            };
-        public static readonly ObservableCollection<string> ClientDataCollectionForConsultant =
-            new ObservableCollection<string>()
-            {
-                "Phone Number"
-            };
-    }
-
-    public static class BankAccountType
-    {
-        public static readonly string depositAccount = "Deposit Account";
-        public static readonly string nonDepositAccount = "Non-deposit Account";
-        public static readonly ObservableCollection<string> allTypes =
-            new ObservableCollection<string>()
-            {
-                "Deposit Account", "Non-deposit Account"
-            };
-    }
-
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

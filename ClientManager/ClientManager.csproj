@@ -166,6 +166,11 @@
   <ItemGroup>
     <Resource Include="Assets\AppLogo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClientManagerDataTypeLibrary\ClientManagerDataTypeLibrary.csproj">
+      <Project>{f9eb9cf6-9d0c-4e4f-94f3-4156f9dc7681}</Project>
+      <Name>ClientManagerDataTypeLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

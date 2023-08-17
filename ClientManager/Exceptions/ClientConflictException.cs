@@ -7,7 +7,7 @@ using ClientManager.Models;
 
 namespace ClientManager.Exceptions
 {
-    class ClientConflictException : Exception
+    public class ClientConflictException : Exception
     {
         public Client ExistingClient { get; }
         public Client IncomingClient { get; }
